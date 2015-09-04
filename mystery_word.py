@@ -1,3 +1,4 @@
+import random
 
 def create_dict():
     master = open("/usr/share/dict/words")
@@ -39,15 +40,13 @@ def hard_words(word_list):
         if len(word) >= 8:
             hard_word_list.append(word)
     return hard_word_list
-#hard_words(create_dict)
 
 def random_word(word_list):
     """
     Returns a random word from the word list.
     """
-    # TODO
-    pass
-
+    correct_word = random.choice(word_list)
+    return correct_word
 
 def display_word(word, guesses):
     """
