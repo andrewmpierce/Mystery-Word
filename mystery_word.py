@@ -1,11 +1,10 @@
 import random
 
-def create_dict():
-    master = open("/usr/share/dict/words")
-    word_list = master.read()
-    word_list = word_list.lower()
-    word_list = list(word_list.split())
-    return word_list
+
+master = open("/usr/share/dict/words")
+dictionary = master.read()
+dictionary = dictionary.lower().split()
+
 
 def easy_words(word_list):
     """
@@ -57,9 +56,23 @@ def display_word(word, guesses):
     For example, if the word is BOMBARD and the letters guessed are a, b,
     and d, this function should return 'B _ _ B A _ D'.
     """
-    # TODO
-    pass
+    base_model = ('_ ') * (len(word))
+    base_model = base_model.strip(' ')
+    wrong_picks = []
+    word = list(word)
+    counter = 0
+    for letter in guesses:
+        if letter in word:
+            joined_word = ' '.join(word)
+            base_model[counter] == joined_word[counter]
+            print(base_model)
+            counter += 1
+        else:
+            wrong_picks.append(letter)
+            counter +=1
+    return base_model
 
+display_word('rat', ['r','o','t'])
 
 def is_word_complete(word, guesses):
     """
