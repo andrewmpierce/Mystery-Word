@@ -83,7 +83,7 @@ def is_word_complete(word, guesses):
 
 
 def get_level():
-    level = input("What difficulty setting do you want?\n")
+    level = input("What difficulty setting do you want? Please enter easy, medium or hard.\n")
     level = level.lower()
     if level == 'easy':
         answer = random_word(easy_words(dictionary))
@@ -112,7 +112,8 @@ def gameplay_loop(answer):
             print("You already guessed that!")
         guesses.append(this_guess)
         print(display_word(answer, guesses))
-        print("You have {} incorrect guesses left.\n".format(8 - fails))
+        print("These are your guesses so far: {}".format(guesses))
+        print("You have {} guesses left.\n".format(8 - fails))
         if fails >= 8:
             break
     if fails >= 8:
