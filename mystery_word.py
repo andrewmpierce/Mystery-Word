@@ -72,9 +72,11 @@ def is_word_complete(word, guesses):
     Returns True if the list of guesses covers every letter in the word,
     otherwise returns False.
     """
-    # TODO
-    pass
-
+    progress = display_word(word, guesses)
+    if '_' in progress:
+        return False
+    else:
+        return True
 
 def main():
     """
