@@ -101,20 +101,27 @@ def main():
         answer = random_word(hard_words(dictionary))
     guesses = []
     fails = 0
+    print("The word you're looking for has {} letters.".format(len(answer)))
     while is_word_complete(answer, guesses) == False:
         this_guess = (input("Okay, take a guess!\n")).lower()
-        if this_guess not in guesses:
+        if len(this_guess) > 1:
+            print("Not a valid guess. One letter only.")
+        elif this_guess not in guesses:
             if this_guess not in answer:
+                print("That letter isn't in your word.")
                 fails += 1
+            else:
+                print("Nice! That letter is in your word!")
         else:
-            print("You must not be feeling well, you've already guessed that!")
+            print("You already guessed that!")
         guesses.append(this_guess)
         print(display_word(answer, guesses))
-        print("You have {} incorrect guesses left.".format(8 - fails))
+        print("You have {} incorrect guesses left.\n".format(8 - fails))
         if fails >= 8:
             break
     if fails >= 8:
         play_again_lose = input(("You lose! The word was {}. If you want to play again, enter yes.\n".format(answer)))
+        play_again_lose.lower()
         if play_again_lose == 'yes':
             return main()
         else:
