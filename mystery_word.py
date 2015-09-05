@@ -78,19 +78,7 @@ def is_word_complete(word, guesses):
     else:
         return True
 
-def main():
-    """
-    Runs when the program is called from the command-line.
-    1. Prompts the user for a difficulty level
-    2. Sets up the game based upon the difficulty level
-    3. Performs the game loop, consisting of:
-       a. Printing the word in progress, using _ for unguessed letters
-       b. Printing the number of guesses remaining
-       c. Printing the letters that have been guessed so far
-       d. Prompting the user for a letter to guess
-    4. Finishing the game and displaying whether the user has won or lost
-    5. Giving the user the option to play again
-    """
+def get_level():
     level = input("What difficulty setting do you want?\n")
     level = level.lower()
     if level == 'easy':
@@ -99,6 +87,10 @@ def main():
         answer = random_word(medium_words(dictionary))
     else:
         answer = random_word(hard_words(dictionary))
+    return answer
+
+
+def gameplay_loop(answer):
     guesses = []
     fails = 0
     print("The word you're looking for has {} letters.".format(len(answer)))
@@ -133,6 +125,23 @@ def main():
             return main()
         else:
             print("Okay, have a nice day!")
+
+
+def main():
+    """
+    Runs when the program is called from the command-line.
+    1. Prompts the user for a difficulty level
+    2. Sets up the game based upon the difficulty level
+    3. Performs the game loop, consisting of:
+       a. Printing the word in progress, using _ for unguessed letters
+       b. Printing the number of guesses remaining
+       c. Printing the letters that have been guessed so far
+       d. Prompting the user for a letter to guess
+    4. Finishing the game and displaying whether the user has won or lost
+    5. Giving the user the option to play again
+    """
+    answer = get_level()
+    return gameplay_loop(answer)
 
 if __name__ == '__main__':
     main()
