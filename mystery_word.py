@@ -109,7 +109,7 @@ def main():
             print("You must not be feeling well, you've already guessed that!")
         guesses.append(this_guess)
         print(display_word(answer, guesses))
-        print("You have {} trys left.".format(8 - fails))
+        print("You have {} incorrect guesses left.".format(8 - fails))
         if fails >= 8:
             break
     if fails >= 8:
