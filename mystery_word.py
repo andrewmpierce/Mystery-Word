@@ -91,8 +91,39 @@ def main():
     4. Finishing the game and displaying whether the user has won or lost
     5. Giving the user the option to play again
     """
-    # TODO
-
+    level = input("What difficulty setting do you want?\n")
+    if level == 'easy':
+        answer = random_word(easy_words(dictionary))
+    elif level == 'medium':
+        answer = random_word(medium_words(dictionary))
+    else:
+        answer = random_word(hard_words(dictionary))
+    guesses = []
+    fails = 0
+    while is_word_complete(answer, guesses) == False:
+        this_guess = (input("Okay, take a guess!\n")).lower()
+        if this_guess not in guesses:
+            if this_guess not in answer:
+                fails += 1
+        else:
+            print("You must not be feeling well, you've already guessed that!")
+        guesses.append(this_guess)
+        print(display_word(answer, guesses))
+        print("You have {} trys left.".format(8 - fails))
+        if fails >= 8:
+            break
+    if fails >= 8:
+        play_again_lose = input(("You lose! If you want to play again, enter yes.\n"))
+        if play_again_lose == 'yes':
+            return main()
+        else:
+            print("Okay, have a nice day!")
+    else:
+        play_again_win = input(("You won! If you want to play again, enter yes.\n"))
+        if play_again_win == 'yes':
+            return main()
+        else:
+            print("Okay, have a nice day!")
 
 if __name__ == '__main__':
     main()
