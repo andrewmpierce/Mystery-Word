@@ -29,6 +29,7 @@ def medium_words(word_list):
             medium_word_list.append(word)
     return medium_word_list
 
+
 def hard_words(word_list):
     """
     Returns a filtered version of the word list with words only containing
@@ -40,12 +41,14 @@ def hard_words(word_list):
             hard_word_list.append(word)
     return hard_word_list
 
+
 def random_word(word_list):
     """
     Returns a random word from the word list.
     """
     correct_word = random.choice(word_list)
     return correct_word
+
 
 def display_word(word, guesses):
     """
@@ -77,6 +80,7 @@ def is_word_complete(word, guesses):
         return False
     else:
         return True
+
 
 def get_level():
     level = input("What difficulty setting do you want?\n")
