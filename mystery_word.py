@@ -113,7 +113,7 @@ def main():
         if fails >= 8:
             break
     if fails >= 8:
-        play_again_lose = input(("You lose! If you want to play again, enter yes.\n"))
+        play_again_lose = input(("You lose! The word was {}. If you want to play again, enter yes.\n".format(answer)))
         if play_again_lose == 'yes':
             return main()
         else:
