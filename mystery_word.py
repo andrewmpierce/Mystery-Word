@@ -92,6 +92,7 @@ def main():
     5. Giving the user the option to play again
     """
     level = input("What difficulty setting do you want?\n")
+    level = level.lower()
     if level == 'easy':
         answer = random_word(easy_words(dictionary))
     elif level == 'medium':
@@ -120,6 +121,7 @@ def main():
             print("Okay, have a nice day!")
     else:
         play_again_win = input(("You won! If you want to play again, enter yes.\n"))
+        play_again_win.lower()
         if play_again_win == 'yes':
             return main()
         else:
