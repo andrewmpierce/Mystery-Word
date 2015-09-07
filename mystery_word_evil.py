@@ -49,15 +49,26 @@ def random_word(word_list):
     return correct_word
 
 
-def evil_pick_length(word, guesses, level_dict):
+def evil_pick_length(word, level_dict):
     for entry in level_dict:
         if len(word) != len(entry):
             level_dict.remove(word)
     return level_dict
 
-def evil_check_guesses(word, guesses):
+
+def evil_check_guesses(word, correct_guesses, avail_dict):
+    for entry in avail_dict:
+        if correct_guesses not in entry:
+            avail_dict.remove(entry)
+    return avail_dict
 
 
+def find_correct_guesses(progress_display):
+    correct_guesses = []
+    for letter in progress_display:
+        if letter.isalpha() == True:
+            correct_guesses.append(letter)
+    return correct_guesses
 
 
 def display_word(word, guesses):
