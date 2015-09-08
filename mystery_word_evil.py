@@ -157,7 +157,7 @@ def main():
     """
     level = input("What difficulty setting do you want? Please enter easy, medium or hard.\n")
     answer = get_level(level)
-    return gameplay_loop(answer)
+    return gameplay_loop()
 
 if __name__ == '__main__':
     main()
